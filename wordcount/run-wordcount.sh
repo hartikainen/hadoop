@@ -1,7 +1,7 @@
 #!/bin/bash
 
-INPUT_FILE=/vanrikki-stool.txt
-OUTPUT_PATH=/output
+INPUT_FILE=/input/vanrikki-stool.txt
+OUTPUT_PATH=/output/vanrikki-stool
 
 echo "running WordCount example on file"
 echo "Hadoop should be up and running"
