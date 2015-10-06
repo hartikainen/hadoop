@@ -11,7 +11,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
 import org.apache.hadoop.io.ArrayWritable;
 import org.apache.hadoop.io.Text;
 
-import org.json.*;
+import org.json.JSONObject;
 
 //TODO import necessary components
 
@@ -42,27 +42,24 @@ public class CombineBooks {
     private final static class CombineBooksMapper
         extends Mapper<Object, Text, Text, Text> {
 
-        private final JsonFactory factory = new JsonFactory();
-
         public void map(Object key, Text value, Context context)
             throws IOException, InterruptedException {
-            JSONObject obj;
             Text author = new Text();
             Text book   = new Text();
-            JsonParser parser;
+
+            JSONObject json;
+
             String line;
             StringTokenizer tokenizer = new StringTokenizer(value.toString(), "\n");
 
             while (tokenizer.hasMoreTokens()) {
                 try {
                     line = tokenizer.nextToken();
-                    parser = factory.createJsonParser(line);
+                    json = new JSONObject(line);
 
-                    parser.nextToken();
-                    author.set(parser.getText());
+                    author.set(json.getString("author"));
 
-                    parser.nextToken();
-                    book.set(parser.getText());
+                    book.set(json.getString("book"));
 
                     context.write(author, book);
 
