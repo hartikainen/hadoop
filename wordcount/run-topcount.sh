@@ -8,9 +8,9 @@ echo "Hadoop should be up and running"
 echo "=============================================="
 
 hadoop com.sun.tools.javac.Main TopCount.java
-jar cf wc.jar TopCount*.class
+jar cf tc.jar TopCount*.class
 
-hadoop jar wc.jar TopCount $INPUT_FILE $OUTPUT_PATH
+hadoop jar tc.jar TopCount $INPUT_FILE $OUTPUT_PATH
 
 echo
 echo "=============================================="
