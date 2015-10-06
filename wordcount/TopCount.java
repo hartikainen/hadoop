@@ -62,8 +62,10 @@ public class TopCount {
                 sum += val.get();
             }
 
-            result.set(sum);
-            context.write(key, result);
+            if (sum > 100) {
+                result.set(sum);
+                context.write(key, result);
+            }
         }
     }
 
