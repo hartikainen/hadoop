@@ -8,9 +8,9 @@ echo "Hadoop should be up and running"
 echo "=============================================="
 
 hadoop com.sun.tools.javac.Main CombineBooks.java
-jar cf tc.jar CombineBooks*.class
+jar cf cb.jar CombineBooks*.class
 
-hadoop jar tc.jar CombineBooks $INPUT_FILE $OUTPUT_PATH
+hadoop jar cb.jar CombineBooks $INPUT_FILE $OUTPUT_PATH
 
 echo
 echo "=============================================="
