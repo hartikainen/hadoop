@@ -11,7 +11,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
 import org.apache.hadoop.io.ArrayWritable;
 import org.apache.hadoop.io.Text;
 
-import org.codehaus.jackson;
+import org.json.*;
 
 //TODO import necessary components
 
@@ -46,7 +46,7 @@ public class CombineBooks {
 
         public void map(Object key, Text value, Context context)
             throws IOException, InterruptedException {
-
+            JSONObject obj;
             Text author = new Text();
             Text book   = new Text();
             JsonParser parser;
