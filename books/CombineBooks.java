@@ -1,6 +1,17 @@
+import java.io.IOException;
+import java.io.StringTokenizer;
+
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.util.GenericOptionsParser;
+
+import org.apache.hadoop.io.ArrayWritable;
+import org.apache.hadoop.io.Text;
+
+import org.codehaus.jackson;
 
 //TODO import necessary components
 
@@ -11,6 +22,14 @@ import org.apache.hadoop.util.GenericOptionsParser;
  *  Beaware that, this may work on anynumber of nodes!
  *
  */
+
+// JSONObject obj = new JSONObject(str);
+// JSONArray arr = new JSONArray(obj.get("subcategories"));
+
+// for(int i = 0; i < arr.length; i++)
+// JSONObject temp = arr.getJSONObject(i);
+// Category c = new Category();
+// c.setId(temp.get("id"));
 
 public class CombineBooks {
 
