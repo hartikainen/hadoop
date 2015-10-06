@@ -1,5 +1,3 @@
-package org.hwone;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.util.GenericOptionsParser;
@@ -16,7 +14,43 @@ import org.apache.hadoop.util.GenericOptionsParser;
 
 public class CombineBooks {
 
-    //TODO define variables and implement necessary components
+    private final static class TextArrayWritable extends ArrayWritable {
+        public TextArrayWritable() {
+            super(Text.class);
+        }
+    }
+
+    private final static class CombineBooksMapper
+        extends Mapper<Object, Text, Text, Text> {
+
+        private final JsonFactory factory = new JsonFactory();
+
+        public void map(Object key, Text value, Context context)
+            throws IOException, InterruptedException {
+
+            Text author = new Text();
+            Text book   = new Text();
+            JsonParser parser;
+            String line;
+            StringTokenizer tokenizer = new StringTokenizer(value.toString(), "\n");
+
+            while (tokenizer.hasMoreTokens) {
+                try {
+                    line = tokenizer.nextToken();
+                    parser = factory.createJsonParser(line);
+
+                    parser.nextToken();
+                    author.set(parser.getText());
+
+                    parser.nextToken();
+                    book.set(parser.getText());
+
+                    context.write(author, book);
+
+                } catch (Exception e) {} // ignore exceptions for now
+            }
+        }
+    }
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
