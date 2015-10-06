@@ -39,7 +39,7 @@ public class TopCount {
             throws IOException, InterruptedException {
 
             int sum = 0;
-            while (IntWritable val : values) {
+            for (IntWritable val : values) {
                 sum += val.get();
             }
             context.write(key, new IntWritable(sum));
