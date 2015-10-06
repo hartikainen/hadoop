@@ -53,7 +53,7 @@ public class CombineBooks {
             String line;
             StringTokenizer tokenizer = new StringTokenizer(value.toString(), "\n");
 
-            while (tokenizer.hasMoreTokens) {
+            while (tokenizer.hasMoreTokens()) {
                 try {
                     line = tokenizer.nextToken();
                     parser = factory.createJsonParser(line);
