@@ -10,6 +10,7 @@ echo "=============================================="
 hadoop com.sun.tools.javac.Main TopCount.java
 jar cf tc.jar TopCount*.class
 
+hadoop fs -rm -f -r /output/top-count
 hadoop jar tc.jar TopCount $INPUT_FILE $OUTPUT_PATH
 
 echo

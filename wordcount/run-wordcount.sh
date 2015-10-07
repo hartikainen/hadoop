@@ -10,6 +10,7 @@ echo "=============================================="
 hadoop com.sun.tools.javac.Main WordCount.java
 jar cf wc.jar WordCount*.class
 
+hadoop fs -rm -f -r /output/vanrikki-stool
 hadoop jar wc.jar WordCount $INPUT_FILE $OUTPUT_PATH
 
 echo
